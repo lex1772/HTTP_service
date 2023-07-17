@@ -1,0 +1,10 @@
+{% extends 'files/base.html' %}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'files:upload_list'%}" role="button">Назад</a>
+<form method="post">
+      {%csrf_token%}
+      Подтверждаете удаление файла?
+      <input type="submit" class="btn btn-outline-danger" value="Подтвердить">
+</form>
+{% endblock %}

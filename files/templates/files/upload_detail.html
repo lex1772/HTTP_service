@@ -1,0 +1,34 @@
+{% extends 'files/base.html' %}
+{%load static%}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'files:upload_list'%}" role="button">Назад</a>
+<div style="padding:40px;margin:40px;border:1px solid #ccc">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+            {% for header in file.headers %}
+                <th>{{ header }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in file.li %}
+            <tr>
+                {% for val in row.values %}
+                    <td>{{ val }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+</div>
+{% endblock %}

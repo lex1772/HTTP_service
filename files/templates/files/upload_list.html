@@ -1,0 +1,21 @@
+{% extends 'files/base.html' %}
+{%load static%}
+
+{% block content %}
+<main>
+
+<div style="padding:40px;margin:40px;border:1px solid #ccc">
+    <ul>
+    {% for object in object_list %}
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">{{object.name}}</h1>
+      <p><b>Колонки:</b></p>
+      <p>{{object.headers}}</p>
+      <a class="btn btn-outline-secondary" href="{%url 'files:upload_detail' pk=object.pk%}">Посмотреть содержимое</a>
+      <a class="btn btn-outline-danger" href="{%url 'files:upload_delete' pk=object.pk %}">Удалить</a>
+    </div>
+    {% endfor %}
+    </ul>
+</div>
+{% include "files/includes/pagination.html" %}
+{% endblock %}

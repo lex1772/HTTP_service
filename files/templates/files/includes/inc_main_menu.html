@@ -1,0 +1,15 @@
+<header class="site-header sticky-top py-1">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Product">
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="{%url 'files:upload_list' %}">Главная</a>
+    <a class="py-2 d-none d-md-inline-block" href="{%url 'files:upload' %}">Загрузить файл</a>
+    {% if user.is_authenticated %}
+      <a class="py-2 d-none d-md-inline-block" href="{%url 'users:profile' %}">Профиль</a>
+      <a class="py-2 d-none d-md-inline-block" href="{%url 'users:logout' %}">Выйти</a>
+    {% else %}
+      <a class="py-2 d-none d-md-inline-block" href="{%url 'users:login' %}">Войти</a>
+      <a class="py-2 d-none d-md-inline-block" href="{%url 'users:register' %}">Регистрация</a>
+    {% endif %}
+  </nav>
+</header>

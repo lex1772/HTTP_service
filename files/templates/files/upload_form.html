@@ -1,0 +1,21 @@
+{% extends 'files/base.html' %}
+{%load static%}
+
+{% block content %}
+<a class="btn btn-outline-dark" href="{%url 'files:upload_list'%}" role="button">Назад</a>
+<div style="padding:40px;margin:40px;border:1px solid #ccc">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form><hr>
+    <ul>
+    {% for file in files %}
+        <li>
+            <a href="{{ file.upload_file.url }}">{{ file.upload_file.name }}</a>
+            <small>({{ file.upload_file.size|filesizeformat }}) - {{file.upload_date}}</small>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
